@@ -72,13 +72,13 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		//rb = transform.FindChild ("Body").GetComponent<Rigidbody2D> ();
-		body = transform.FindChild ("Body");
-		head = body.FindChild ("Head").transform;
-		upperArms = body.FindChild ("Upper Arms").transform;
-		lowerArms = body.FindChild ("Upper Arms").FindChild ("Lower Arms").transform;
-		upperLegs = body.FindChild ("Upper Legs").transform;
-		lowerLegs = body.FindChild ("Upper Legs").FindChild ("Lower Legs").transform;
-		feet = body.FindChild ("Upper Legs").FindChild ("Lower Legs").FindChild ("Feet").transform;
+		body = transform.Find ("Body");
+		head = body.Find ("Head").transform;
+		upperArms = body.Find ("Upper Arms").transform;
+		lowerArms = body.Find ("Upper Arms").Find ("Lower Arms").transform;
+		upperLegs = body.Find ("Upper Legs").transform;
+		lowerLegs = body.Find ("Upper Legs").Find ("Lower Legs").transform;
+		feet = body.Find ("Upper Legs").Find ("Lower Legs").Find ("Feet").transform;
 		rb = GetComponent<Rigidbody2D> ();
 		//hud = GetComponent<HUDController> ();
 		freeControls = GameObject.Find ("Free Controls");
@@ -478,7 +478,9 @@ public class PlayerController : MonoBehaviour {
 
 	void OnDrawGizmos() {
 		Gizmos.color = Color.blue;
-		Gizmos.DrawSphere (transform.TransformPoint (rb.centerOfMass), 0.05f);
+		if (rb != null) {
+			Gizmos.DrawSphere(transform.TransformPoint(rb.centerOfMass), 0.05f);
+		}
 	}
 	
 	public void FeetCollided(Collision2D collision, Vector2 normal) {
@@ -566,7 +568,7 @@ public class PlayerController : MonoBehaviour {
 			GameObject curRagdoll = (GameObject)Instantiate (ragdoll, transform.position,
 			                                                 transform.rotation * Quaternion.Euler (0, 0, 7));
 			//Hacky rotation ^ to match the player's body within the 'Player' object
-			curRagdoll.GetComponent<RagdollController> ().MatchTransform (/*curRagdoll.transform, */transform.FindChild ("Body"));
+			curRagdoll.GetComponent<RagdollController> ().MatchTransform (/*curRagdoll.transform, */transform.Find ("Body"));
 			curRagdoll.GetComponent<RagdollController> ().SetVelocity (lastVelocity, lastAngularVelocity);
 
 			Destroy (gameObject);

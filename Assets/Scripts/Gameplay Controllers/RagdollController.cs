@@ -27,63 +27,63 @@ public class RagdollController : MonoBehaviour {
 		currentPart = GetComponent<Rigidbody2D> ();
 		currentPart.mass = totalMass * trunkPercentage;
 
-		currentPart = gameObject.transform.FindChild ("Head").GetComponent<Rigidbody2D> ();
+		currentPart = gameObject.transform.Find ("Head").GetComponent<Rigidbody2D> ();
 		currentPart.mass = totalMass * headPercentage;
 		limits.min = minHeadAngle; limits.max = maxHeadAngle;
 		currentPart.GetComponent<HingeJoint2D> ().limits = limits;
 		//-----Left-----
-		currentPart = transform.FindChild ("Left Upper Arm").GetComponent<Rigidbody2D> ();
+		currentPart = transform.Find ("Left Upper Arm").GetComponent<Rigidbody2D> ();
 		currentPart.mass = totalMass * upperArmPercentage;
 		limits.min = minUpperArmAngle; limits.max = maxUpperArmAngle;
 		currentPart.GetComponent<HingeJoint2D> ().limits = limits;
 
-		currentPart = transform.FindChild ("Left Upper Arm")
-			.FindChild ("Left Lower Arm").GetComponent<Rigidbody2D> ();
+		currentPart = transform.Find ("Left Upper Arm")
+			.Find ("Left Lower Arm").GetComponent<Rigidbody2D> ();
 		currentPart.mass = totalMass * lowerArmPercentage;
 		limits.min = minLowerArmAngle; limits.max = maxLowerArmAngle;
 		currentPart.GetComponent<HingeJoint2D> ().limits = limits;
 
-		currentPart = transform.FindChild ("Left Upper Leg").GetComponent<Rigidbody2D> ();
+		currentPart = transform.Find ("Left Upper Leg").GetComponent<Rigidbody2D> ();
 		currentPart.mass = totalMass * upperLegPercentage;
 		limits.min = minUpperLegAngle; limits.max = maxUpperLegAngle;
 		currentPart.GetComponent<HingeJoint2D> ().limits = limits;
 
-		currentPart = transform.FindChild ("Left Upper Leg")
-			.FindChild ("Left Lower Leg").GetComponent<Rigidbody2D> ();
+		currentPart = transform.Find ("Left Upper Leg")
+			.Find ("Left Lower Leg").GetComponent<Rigidbody2D> ();
 		currentPart.mass = totalMass * lowerLegPercentage;
 		limits.min = minLowerLegAngle; limits.max = maxLowerLegAngle;
 		currentPart.GetComponent<HingeJoint2D> ().limits = limits;
 
-		currentPart = transform.FindChild ("Left Upper Leg")
-			.FindChild ("Left Lower Leg").FindChild ("Left Foot").GetComponent<Rigidbody2D> ();
+		currentPart = transform.Find ("Left Upper Leg")
+			.Find ("Left Lower Leg").Find ("Left Foot").GetComponent<Rigidbody2D> ();
 		currentPart.mass = totalMass * footPercentage;
 		limits.min = minFootAngle; limits.max = maxFootAngle;
 		currentPart.GetComponent<HingeJoint2D> ().limits = limits;
 		//-----Right-----
-		currentPart = transform.FindChild ("Right Upper Arm").GetComponent<Rigidbody2D> ();
+		currentPart = transform.Find ("Right Upper Arm").GetComponent<Rigidbody2D> ();
 		currentPart.mass = totalMass * upperArmPercentage;
 		limits.min = minUpperArmAngle; limits.max = maxUpperArmAngle;
 		currentPart.GetComponent<HingeJoint2D> ().limits = limits;
 
-		currentPart = transform.FindChild ("Right Upper Arm")
-			.FindChild ("Right Lower Arm").GetComponent<Rigidbody2D> ();
+		currentPart = transform.Find ("Right Upper Arm")
+			.Find ("Right Lower Arm").GetComponent<Rigidbody2D> ();
 		currentPart.mass = totalMass * lowerArmPercentage;
 		limits.min = minLowerArmAngle; limits.max = maxLowerArmAngle;
 		currentPart.GetComponent<HingeJoint2D> ().limits = limits;
 
-		currentPart = transform.FindChild ("Right Upper Leg").GetComponent<Rigidbody2D> ();
+		currentPart = transform.Find ("Right Upper Leg").GetComponent<Rigidbody2D> ();
 		currentPart.mass = totalMass * upperLegPercentage;
 		limits.min = minUpperLegAngle; limits.max = maxUpperLegAngle;
 		currentPart.GetComponent<HingeJoint2D> ().limits = limits;
 
-		currentPart = transform.FindChild ("Right Upper Leg")
-			.FindChild ("Right Lower Leg").GetComponent<Rigidbody2D> ();
+		currentPart = transform.Find ("Right Upper Leg")
+			.Find ("Right Lower Leg").GetComponent<Rigidbody2D> ();
 		currentPart.mass = totalMass * lowerLegPercentage;
 		limits.min = minLowerLegAngle; limits.max = maxLowerLegAngle;
 		currentPart.GetComponent<HingeJoint2D> ().limits = limits;
 
-		currentPart = transform.FindChild ("Right Upper Leg")
-			.FindChild ("Right Lower Leg").FindChild ("Right Foot").GetComponent<Rigidbody2D> ();
+		currentPart = transform.Find ("Right Upper Leg")
+			.Find ("Right Lower Leg").Find ("Right Foot").GetComponent<Rigidbody2D> ();
 		currentPart.mass = totalMass * footPercentage;
 		limits.min = minFootAngle; limits.max = maxFootAngle;
 		currentPart.GetComponent<HingeJoint2D> ().limits = limits;
@@ -96,25 +96,25 @@ public class RagdollController : MonoBehaviour {
 	}
 
 	public void MatchTransform (Transform player) {
-		transform.FindChild ("Head").rotation = player.FindChild ("Head").rotation;
+		transform.Find ("Head").rotation = player.Find ("Head").rotation;
 		//-----Left-----
-		transform.FindChild ("Left Upper Arm").rotation = player.FindChild ("Upper Arms").rotation;
-		transform.FindChild ("Left Upper Arm").FindChild ("Left Lower Arm").rotation
-			= player.FindChild ("Upper Arms").FindChild ("Lower Arms").rotation;
-		transform.FindChild ("Left Upper Leg").rotation = player.FindChild ("Upper Legs").rotation;
-		transform.FindChild ("Left Upper Leg").FindChild ("Left Lower Leg").rotation =
-			player.FindChild ("Upper Legs").FindChild ("Lower Legs").rotation;
-		transform.FindChild ("Left Upper Leg").FindChild ("Left Lower Leg").FindChild ("Left Foot").rotation
-			= player.FindChild ("Upper Legs").FindChild ("Lower Legs").FindChild ("Feet").rotation;
+		transform.Find ("Left Upper Arm").rotation = player.Find ("Upper Arms").rotation;
+		transform.Find ("Left Upper Arm").Find ("Left Lower Arm").rotation
+			= player.Find ("Upper Arms").Find ("Lower Arms").rotation;
+		transform.Find ("Left Upper Leg").rotation = player.Find ("Upper Legs").rotation;
+		transform.Find ("Left Upper Leg").Find ("Left Lower Leg").rotation =
+			player.Find ("Upper Legs").Find ("Lower Legs").rotation;
+		transform.Find ("Left Upper Leg").Find ("Left Lower Leg").Find ("Left Foot").rotation
+			= player.Find ("Upper Legs").Find ("Lower Legs").Find ("Feet").rotation;
 		//-----Right-----
-		transform.FindChild ("Right Upper Arm").rotation = player.FindChild ("Upper Arms").rotation;
-		transform.FindChild ("Right Upper Arm").FindChild ("Right Lower Arm").rotation
-			= player.FindChild ("Upper Arms").FindChild ("Lower Arms").rotation;
-		transform.FindChild ("Right Upper Leg").rotation = player.FindChild ("Upper Legs").rotation;
-		transform.FindChild ("Right Upper Leg").FindChild ("Right Lower Leg").rotation =
-			player.FindChild ("Upper Legs").FindChild ("Lower Legs").rotation;
-		transform.FindChild ("Right Upper Leg").FindChild ("Right Lower Leg").FindChild ("Right Foot").rotation
-			= player.FindChild ("Upper Legs").FindChild ("Lower Legs").FindChild ("Feet").rotation;
+		transform.Find ("Right Upper Arm").rotation = player.Find ("Upper Arms").rotation;
+		transform.Find ("Right Upper Arm").Find ("Right Lower Arm").rotation
+			= player.Find ("Upper Arms").Find ("Lower Arms").rotation;
+		transform.Find ("Right Upper Leg").rotation = player.Find ("Upper Legs").rotation;
+		transform.Find ("Right Upper Leg").Find ("Right Lower Leg").rotation =
+			player.Find ("Upper Legs").Find ("Lower Legs").rotation;
+		transform.Find ("Right Upper Leg").Find ("Right Lower Leg").Find ("Right Foot").rotation
+			= player.Find ("Upper Legs").Find ("Lower Legs").Find ("Feet").rotation;
 	}
 	public void SetVelocity (Vector2 velocity, float angularVelocity) {
 		GetComponent<Rigidbody2D> ().velocity = velocity;

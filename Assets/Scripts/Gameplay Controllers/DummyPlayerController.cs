@@ -38,13 +38,13 @@ public class DummyPlayerController : MonoBehaviour {
 		ac = GetComponent<DummyAngularHUDController> ();
 		rb = GetComponent<Rigidbody2D> ();
 
-		body = transform.FindChild ("Body");
-		head = body.FindChild ("Head").transform;
-		upperArms = body.FindChild ("Upper Arms").transform;
-		lowerArms = body.FindChild ("Upper Arms").FindChild ("Lower Arms").transform;
-		upperLegs = body.FindChild ("Upper Legs").transform;
-		lowerLegs = body.FindChild ("Upper Legs").FindChild ("Lower Legs").transform;
-		feet = body.FindChild ("Upper Legs").FindChild ("Lower Legs").FindChild ("Feet").transform;
+		body = transform.Find ("Body");
+		head = body.Find ("Head").transform;
+		upperArms = body.Find ("Upper Arms").transform;
+		lowerArms = body.Find ("Upper Arms").Find ("Lower Arms").transform;
+		upperLegs = body.Find ("Upper Legs").transform;
+		lowerLegs = body.Find ("Upper Legs").Find ("Lower Legs").transform;
+		feet = body.Find ("Upper Legs").Find ("Lower Legs").Find ("Feet").transform;
 
 		//freeControls = GameObject.Find ("Dummy Free Controls");
 		//freeControls.SetActive (true);
